@@ -10,7 +10,7 @@
 }
 
 .campo-desativado{
-    background-color: #ee6e73;
+    background-color: lightskyblue;
 }
 
 .icone{
@@ -28,4 +28,12 @@
 .remove{
     opacity: 0;
     transition: 5s;
+}
+
+.nav-wrapper{
+    background-color: dodgerblue;
+}
+
+footer.page-footer {
+    background-color: dodgerblue;
 }
