@@ -26,7 +26,6 @@ function inserirPlacar(){
     linha.find(".botao-remover").click(remover);
     tabela.prepend(linha);
     
-    
 }
 
 function remover(){
