@@ -1,3 +1,5 @@
+var tempoInicial = $("#tempo").text();
+
 $(function(){
     tamanhoFrase();
     contadores();
@@ -6,10 +8,15 @@ $(function(){
     $("#reiniciar").click(reiniciar);
 });
 
+function atualizaTempo(tempo){
+    tempoInicial = tempo;
+    $("#tempo").text(tempo);
+}
+
 var frase = $(".frase").text();
 function tamanhoFrase(){ 
-    let qntPalavras = frase.split(" ").length;
-    let numPalavras = $("#quantidade-palavras");
+    var qntPalavras = frase.split(" ").length;
+    var numPalavras = $("#quantidade-palavras");
     numPalavras.text(qntPalavras);
 }
 
@@ -24,12 +31,12 @@ function contadores(){
 
 function cronometro(){
     $("#reiniciar").attr("disabled",true);
-    var tempo = $("#tempo").text();
     campo.one("input",function(){
+        var tempoInicial = $("#tempo").text();
         let id = setInterval(function(){
-            tempo--;
-            $("#tempo").text(tempo);
-            if(tempo < 1){
+            tempoInicial--;
+            $("#tempo").text(tempoInicial);
+            if(tempoInicial < 1){
                 clearInterval(id);
                 fimJogo();
             }        
@@ -45,6 +52,7 @@ function fimJogo(){
 }
 
 function comparar(){
+    var frase = $(".frase").text();
     campo.on("input",function(){
         var digitado = campo.val();
         var comparado = frase.substr(0,digitado.length);
@@ -63,7 +71,7 @@ function reiniciar(){
     campo.attr("disabled",false);
     $("#contador-caracteres").text("0");
     $("#contador-palavras").text("0");
-    $("#tempo").text("5");
+    $("#tempo").text(tempoInicial);
     cronometro();
     campo.removeClass("campo-desativado");
     campo.removeClass("borda-verde");

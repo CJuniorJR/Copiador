@@ -37,3 +37,11 @@
 footer.page-footer {
     background-color: dodgerblue;
 }
+
+.placar{
+    display: none;
+}
+
+body{
+    overflow: scroll;
+}
