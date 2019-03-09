@@ -1,10 +1,11 @@
 var tempoInicial = $("#tempo").text();
 
 $(function(){
+    fraseAleatoria();
     tamanhoFrase();
     contadores();
     cronometro();
-    comparar();
+    comparar(); 
     $("#reiniciar").click(reiniciar);
 });
 
@@ -13,10 +14,12 @@ function atualizaTempo(tempo){
     $("#tempo").text(tempo);
 }
 
-var frase = $(".frase").text();
+
 function tamanhoFrase(){ 
+    var frase = $(".frase").text();
     var qntPalavras = frase.split(" ").length;
     var numPalavras = $("#quantidade-palavras");
+    $("#quantidade-caracteres").text(frase.length)
     numPalavras.text(qntPalavras);
 }
 
@@ -36,7 +39,7 @@ function cronometro(){
         let id = setInterval(function(){
             tempoInicial--;
             $("#tempo").text(tempoInicial);
-            if(tempoInicial < 1){
+            if(tempoInicial == 0){
                 clearInterval(id);
                 fimJogo();
             }        
